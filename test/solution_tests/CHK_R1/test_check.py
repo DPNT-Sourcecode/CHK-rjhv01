@@ -81,15 +81,16 @@ class TestSum():
     # +------+-------+------------------------+
 
     def test_2F(self):
-        assert checkout_solution.checkout("F"*2) == 20
+        assert checkout_solution.checkout("F" * 2) == 20
 
     def test_3F(self):
-        assert checkout_solution.checkout("F"*3) == 20
+        assert checkout_solution.checkout("F" * 3) == 20
 
     def test_4F(self):
-        assert checkout_solution.checkout("F"*4) == 30
+        assert checkout_solution.checkout("F" * 4) == 30
 
     def test_5F(self):
-        assert checkout_solution.checkout("F"*5) == 40
+        assert checkout_solution.checkout("F" * 5) == 40
+
 
 
