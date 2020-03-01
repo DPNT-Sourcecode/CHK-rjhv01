@@ -74,6 +74,13 @@ def group_discount(skus_dict, grouped_items, num, amount):
             for key, cnt in carry_group_items:
                 skus_dict[key] -= cnt
 
+            carry_group_items = {
+                key: (cnt + carry_cnt) - num
+            }
+            carry_cnt = (cnt + carry_cnt) - num
+        else:
+            carry_cnt += cnt
+
 
 # costs Y when you buy X of item
 def XforY(skus_dict, item, X, Y):
@@ -184,6 +191,7 @@ def checkout(skus):
         sum += skus_dict[key] * item_price[key]
 
     return sum
+
 
 
 
