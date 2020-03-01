@@ -27,7 +27,7 @@ class TestSum():
         assert checkout_solution.checkout("E") == -1
 
     def test_invalid3(self):
-        assert checkout_solution.checkout("") == -1
+        assert checkout_solution.checkout("") == 0
 
     def test_BAAAB(self):
         assert checkout_solution.checkout("BAAA") == 160
@@ -40,4 +40,5 @@ class TestSum():
 
     def test_a(self):
         assert checkout_solution.checkout("a") == -1
+
 

@@ -14,7 +14,6 @@ ALLOWED_ITEMS = ["A", "B", "C", "D"]
 # skus = unicode string
 def checkout(skus):
     skus = list(skus)
-    print(skus)
 
     # get number of items
     skus_dict = {}
@@ -46,7 +45,8 @@ def checkout(skus):
         if key == "D":
             sum += skus_dict["D"] * 15
 
-    return -1 if sum == 0 else sum
+    return sum
+
 
 
 
