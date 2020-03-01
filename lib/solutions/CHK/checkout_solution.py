@@ -73,11 +73,12 @@ def group_discount(skus_dict, grouped_items, num, amount):
                     total += num_to_remove * amount
                     skus_dict[k] -= num_to_remove * num
                 else:
-                    to_remove = skus_dict % num
+                    to_remove = (skus_dict % num)
                     if k in pending_removed:
                         pending_removed[k] += to_remove
                     else:
-                        pending_removed[k] = skus_dict % num
+                        pending_removed[k] = to_remove
+                    total_pending += to_remove
 
 
 
@@ -184,4 +185,5 @@ def checkout(skus):
         sum += skus_dict[key] * item_price[key]
 
     return sum
+
 
