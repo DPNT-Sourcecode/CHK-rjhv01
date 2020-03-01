@@ -59,7 +59,10 @@ item_price = {
 
 
 def group_discount(skus_dict, grouped_items, num, amount):
-
+    while True:
+        for k in grouped_items:
+            if k in skus_dict and skus_dict[k] > 0:
+                skus_dict[k] -= 1
 
 
 # costs Y when you buy X of item
@@ -165,6 +168,7 @@ def checkout(skus):
         sum += skus_dict[key] * item_price[key]
 
     return sum
+
 
 
 

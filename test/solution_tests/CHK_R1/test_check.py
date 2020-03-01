@@ -146,11 +146,21 @@ class TestSum():
     # | Z    | 21    | buy any 3 of (S,T,X,Y,Z) for 45 |
     # +------+-------+---------------------------------+
 
+    def test_STY(self):
+        assert checkout_solution.checkout("STY") == 45
+
+    def test_3Y(self):
+        assert checkout_solution.checkout("Y"*3) == 45
+
+    def test_4Y(self):
+        assert checkout_solution.checkout("Y"*4) == 65
+
     def test_get_another_free(self):
         pass
 
     def test_get_one_free(self):
         pass
+
 
 
 
