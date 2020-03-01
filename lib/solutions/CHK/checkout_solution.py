@@ -57,6 +57,7 @@ item_price = {
     "Z": 50,
 }
 
+# costs Y when you buy X of item
 def XforY(skus_dict, item, X, Y):
     total = 0
     if item in skus_dict:
@@ -66,6 +67,7 @@ def XforY(skus_dict, item, X, Y):
     return total
 
 
+# get other_item free when you buy num_for_free of item
 def get_another_free(skus_dict, item, other_item, num_for_free=2):
     if other_item in skus_dict and item in skus_dict:
         skus_dict[other_item] -= skus_dict[item] // num_for_free
@@ -75,6 +77,7 @@ def get_another_free(skus_dict, item, other_item, num_for_free=2):
     return skus_dict
 
 
+# buy num_for_free of item and get 1 free
 def get_one_free(skus_dict, item, num_for_free=2):
     if item in skus_dict:
         if skus_dict[item] <= num_for_free:
@@ -157,4 +160,5 @@ def checkout(skus):
         sum += skus_dict[key] * item_price[key]
 
     return sum
+
 
