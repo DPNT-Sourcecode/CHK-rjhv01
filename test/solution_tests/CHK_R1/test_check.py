@@ -69,4 +69,27 @@ class TestSum():
     def test_4E2B(self):
         assert checkout_solution.checkout("EEBEEB") == 160
 
+    # +------+-------+------------------------+
+    # | Item | Price | Special offers         |
+    # +------+-------+------------------------+
+    # | A    | 50    | 3A for 130, 5A for 200 |
+    # | B    | 30    | 2B for 45              |
+    # | C    | 20    |                        |
+    # | D    | 15    |                        |
+    # | E    | 40    | 2E get one B free      |
+    # | F    | 10    | 2F get one F free      |
+    # +------+-------+------------------------+
+
+    def test_2F(self):
+        assert checkout_solution.checkout("F"*2) == 20
+
+    def test_3F(self):
+        assert checkout_solution.checkout("F"*3) == 20
+
+    def test_4F(self):
+        assert checkout_solution.checkout("F"*4) == 30
+
+    def test_5F(self):
+        assert checkout_solution.checkout("F"*5) == 40
+
 

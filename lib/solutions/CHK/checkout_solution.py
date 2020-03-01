@@ -6,9 +6,10 @@
 # | C    | 20    |                        |
 # | D    | 15    |                        |
 # | E    | 40    | 2E get one B free      |
+# | F    | 10    | 2F get one F free      |
 # +------+-------+------------------------+
 
-ALLOWED_ITEMS = ["A", "B", "C", "D", "E"]
+ALLOWED_ITEMS = ["A", "B", "C", "D", "E", "F"]
 
 # noinspection PyUnusedLocal
 # skus = unicode string
