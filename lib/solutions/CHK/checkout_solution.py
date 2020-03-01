@@ -27,6 +27,7 @@ item_price = {
     "Z": 21,
 }
 
+
 def group_discount(skus_dict, grouped_items, num, amount):
     total = 0
 
@@ -79,21 +80,19 @@ def get_another_free(skus_dict, item, other_item, num_for_free=2):
         skus_dict[other_item] -= skus_dict[item] // num_for_free
 
         if skus_dict[other_item] <= 0:
-            del skus_dict[other_item]
-    return skus_dict
+            skus_dict[other_item] = 0
 
 
 # buy num_for_free of item and get 1 free
 def get_one_free(skus_dict, item, num_for_free=2):
     if item in skus_dict:
         if skus_dict[item] <= num_for_free:
-            return skus_dict
+            return
 
         num_free = (skus_dict[item] // num_for_free)
         if skus_dict[item] % num_for_free == 0:
             num_free -= 1
         skus_dict[item] -= num_free
-    return skus_dict
 
 
 # noinspection PyUnusedLocal
@@ -115,11 +114,12 @@ def checkout(skus):
     sum = 0
 
     # apply Special offers
-    skus_dict = get_another_free(skus_dict, "E", "B")
-    skus_dict = get_another_free(skus_dict, "N", "M", 3)
-    skus_dict = get_another_free(skus_dict, "R", "Q", 3)
-    skus_dict = get_one_free(skus_dict, "F")
-    skus_dict = get_one_free(skus_dict, "U", 3)
+    get_another_free(skus_dict, "E", "B")
+    get_another_free(skus_dict, "N", "M", 3)
+    get_another_free(skus_dict, "R", "Q", 3)
+    get_one_free(skus_dict, "F")
+    get_one_free(skus_dict, "U", 3)
+
     sum += XforY(skus_dict, "A", 5, 200)
     sum += XforY(skus_dict, "A", 3, 130)
     sum += XforY(skus_dict, "B", 2, 45)
@@ -131,7 +131,7 @@ def checkout(skus):
     sum += XforY(skus_dict, "V", 3, 130)
     sum += XforY(skus_dict, "V", 2, 90)
 
-    sum += group_discount(skus_dict, ["S","T","X","Y","Z"], 3, 45)
+    sum += group_discount(skus_dict, ["S", "T", "X", "Y", "Z"], 3, 45)
     sum += XforY(skus_dict, "S", 3, 45)
     sum += XforY(skus_dict, "T", 3, 45)
     sum += XforY(skus_dict, "X", 3, 45)
@@ -143,3 +143,4 @@ def checkout(skus):
         sum += skus_dict[key] * item_price[key]
 
     return sum
+
