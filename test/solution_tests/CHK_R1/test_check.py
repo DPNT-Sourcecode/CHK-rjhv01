@@ -23,8 +23,8 @@ class TestSum():
     def test_invalid1(self):
         assert checkout_solution.checkout("-") == -1
 
-    def test_invalid2(self):
-        assert checkout_solution.checkout("E") == -1
+    # def test_invalid2(self):
+    #     assert checkout_solution.checkout("E") == -1
 
     def test_invalid3(self):
         assert checkout_solution.checkout("") == 0
@@ -51,8 +51,8 @@ class TestSum():
     # | E    | 40    | 2E get one B free      |
     # +------+-------+------------------------+
 
-    def test_4A(self):
-        assert checkout_solution.checkout("A" * 4) == 200
+    def test_5A(self):
+        assert checkout_solution.checkout("A" * 5) == 200
 
     def test_6A(self):
         assert checkout_solution.checkout("A" * 6) == 250
@@ -68,4 +68,5 @@ class TestSum():
 
     def test_4E2B(self):
         assert checkout_solution.checkout("EEBEEB") == 160
+
 

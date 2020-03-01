@@ -8,7 +8,7 @@
 # | E    | 40    | 2E get one B free      |
 # +------+-------+------------------------+
 
-ALLOWED_ITEMS = ["A", "B", "C", "D"]
+ALLOWED_ITEMS = ["A", "B", "C", "D", "E"]
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -35,14 +35,14 @@ def checkout(skus):
         if "B" in skus_dict:
             skus_dict["B"] -= skus_dict["E"] // 2
 
-        if skus_dict["B"] <= 0:
-            del skus_dict["B"]
+            if skus_dict["B"] <= 0:
+                del skus_dict["B"]
 
     if "A" in skus_dict:
         # 3A for 130, 5A for 200
         while skus_dict["A"] >= 5:
             skus_dict["A"] -= 5
-            sum +=
+            sum += 200
         sum += (skus_dict["A"] // 3) * 130
         sum += (skus_dict["A"] % 3) * 50
         del skus_dict["A"]
@@ -59,8 +59,11 @@ def checkout(skus):
             sum += skus_dict["C"] * 20
         if key == "D":
             sum += skus_dict["D"] * 15
+        if key == "E":
+            sum += skus_dict["E"] * 40
 
     return sum
+
 
 
 
