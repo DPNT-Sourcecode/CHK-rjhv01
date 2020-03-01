@@ -64,6 +64,9 @@ class TestSum():
     def test_4K(self):
         assert checkout_solution.checkout("K" * 4) == 240
 
+    def test_3K(self):
+        assert checkout_solution.checkout("K" * 3) == 190
+
     def test_6F(self):
         assert checkout_solution.checkout("F" * 6) == 40
 
@@ -96,5 +99,6 @@ class TestSum():
 
     def test_4Y(self):
         assert checkout_solution.checkout("Y"*4) == 65
+
 
 
