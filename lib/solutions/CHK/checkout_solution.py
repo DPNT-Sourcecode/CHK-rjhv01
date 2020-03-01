@@ -31,7 +31,11 @@
 ALLOWED_ITEMS = ["A", "B", "C", "D", "E", "F"]
 
 def XforY(skus_dict, item, X, Y):
-    sum += (skus_dict["B"] // X) * Y
+    total = 0
+    if item in skus_dict:
+        total += (skus_dict[item] // X) * Y
+        skus_dict[item] -= skus_dict[item] // X
+    return skus_dict, total
 
 def get_another_free(skus_dict, item, other_item, num_for_free=2):
     if other_item in skus_dict:
@@ -92,9 +96,8 @@ def checkout(skus):
 
     if "B" in skus_dict:
         # 2B for 45
-        sum += (skus_dict["B"] // 2) * 45
-        sum += (skus_dict["B"] % 2) * 30
-        del skus_dict["B"]
+        skus_dict, s = XforY(skus_dict, "B", 2, 45)
+        sum += s
 
     if "F" in skus_dict and skus_dict["F"] > 2:
         # 2F get one F free
@@ -102,6 +105,8 @@ def checkout(skus):
 
     # handle rest of items
     for key in skus_dict:
+        if key == "B":
+            sum += skus_dict["C"] * 30
         if key == "C":
             sum += skus_dict["C"] * 20
         if key == "D":
@@ -112,3 +117,4 @@ def checkout(skus):
             sum += skus_dict["F"] * 10
 
     return sum
+
