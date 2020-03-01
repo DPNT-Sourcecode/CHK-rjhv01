@@ -28,8 +28,6 @@
 # | Y    | 10    |                        |
 # | Z    | 50    |                        |
 # +------+-------+------------------------+
-ALLOWED_ITEMS = ["A", "B", "C", "D", "E", "F"]
-
 
 def XforY(skus_dict, item, X, Y):
     total = 0
@@ -100,7 +98,7 @@ item_price = {
     "E": 40,
     "F": 10,
     "G": 20,
-    "H": 20,
+    "H": 10,
     "I": 35,
     "J": 60,
     "K": 80,
@@ -129,7 +127,7 @@ def checkout(skus):
     # get number of items
     skus_dict = {}
     for sku in skus:
-        if sku not in ALLOWED_ITEMS:
+        if sku not in item_price.keys():
             return -1
 
         if sku in skus_dict:
@@ -147,20 +145,10 @@ def checkout(skus):
 
     # handle rest of items
     for key in skus_dict:
-        if key == "A":
-            sum += skus_dict["A"] * 50
-        if key == "B":
-            sum += skus_dict["B"] * 30
-        if key == "C":
-            sum += skus_dict["C"] * 20
-        if key == "D":
-            sum += skus_dict["D"] * 15
-        if key == "E":
-            sum += skus_dict["E"] * 40
-        if key == "F":
-            sum += skus_dict["F"] * 10
+        sum += skus_dict[key] * item_price[key]
 
     return sum
+
 
 
 
