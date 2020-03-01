@@ -47,43 +47,46 @@ def group_discount(items_cnt, grouped_items, num, amount):
             grouped_discount_str += key * items_cnt[key]
             # remove from items_cnt
             items_cnt[key] = 0
+    print(grouped_discount_str)
+    items_left = grouped_discount_str[- (len(grouped_discount_str) % num) + 1]
+    print(items_left)
+    for item in items_left:
+        items_cnt[item] += 1
 
-    items_left = grouped_discount_str[- len(grouped_discount_str) % num]
+    return (len(grouped_discount_str) // num) * amount
 
-
-
-    carry_group_items = {}
-    carry_cnt = 0
-    for key in ks:
-        if key in grouped_items:
-            if items_cnt[key] >= num:
-                num_taken = items_cnt[key] // num
-                items_cnt[key] -= num_taken
-                total += amount * num_taken
-
-                carry_group_items[key] = items_cnt[key] % num
-
-            # cnt = items_cnt[key]
-            # if cnt + carry_cnt >= num:
-            #     total += amount
-            #
-            #     # delete the carried items
-            #     for key2 in carry_group_items:
-            #         items_cnt[key2] -= carry_group_items[key2]
-            #
-            #     carry_group_items = {
-            #         key: (cnt + carry_cnt) - num
-            #     }
-            #     carry_cnt = (cnt + carry_cnt) - num
-            # else:
-            #     # carry the items over
-            #
-            #     if key in carry_group_items:
-            #         carry_group_items[key] += cnt
-            #     else:
-            #         carry_group_items[key] = cnt
-            #     carry_cnt += cnt
-    return total
+    # carry_group_items = {}
+    # carry_cnt = 0
+    # for key in ks:
+    #     if key in grouped_items:
+    #         if items_cnt[key] >= num:
+    #             num_taken = items_cnt[key] // num
+    #             items_cnt[key] -= num_taken
+    #             total += amount * num_taken
+    #
+    #             carry_group_items[key] = items_cnt[key] % num
+    #
+    #         # cnt = items_cnt[key]
+    #         # if cnt + carry_cnt >= num:
+    #         #     total += amount
+    #         #
+    #         #     # delete the carried items
+    #         #     for key2 in carry_group_items:
+    #         #         items_cnt[key2] -= carry_group_items[key2]
+    #         #
+    #         #     carry_group_items = {
+    #         #         key: (cnt + carry_cnt) - num
+    #         #     }
+    #         #     carry_cnt = (cnt + carry_cnt) - num
+    #         # else:
+    #         #     # carry the items over
+    #         #
+    #         #     if key in carry_group_items:
+    #         #         carry_group_items[key] += cnt
+    #         #     else:
+    #         #         carry_group_items[key] = cnt
+    #         #     carry_cnt += cnt
+    # return total
 
 
 # costs Y when you buy X of item
@@ -164,12 +167,3 @@ def checkout(skus):
         sum += items_cnt[key] * item_price[key]
 
     return sum
-
-
-
-
-
-
-
-
-
