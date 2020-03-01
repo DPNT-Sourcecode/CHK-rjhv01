@@ -33,7 +33,7 @@ ALLOWED_ITEMS = ["A", "B", "C", "D", "E", "F"]
 def XforY(skus_dict, item, X, Y):
     total = 0
     if item in skus_dict:
-        total += (skus_dict[item] // X) * Y
+        total = (skus_dict[item] // X) * Y
         skus_dict[item] -= skus_dict[item] // X
     return skus_dict, total
 
@@ -106,7 +106,7 @@ def checkout(skus):
     # handle rest of items
     for key in skus_dict:
         if key == "B":
-            sum += skus_dict["C"] * 30
+            sum += skus_dict["B"] * 30
         if key == "C":
             sum += skus_dict["C"] * 20
         if key == "D":
@@ -117,4 +117,5 @@ def checkout(skus):
             sum += skus_dict["F"] * 10
 
     return sum
+
 
