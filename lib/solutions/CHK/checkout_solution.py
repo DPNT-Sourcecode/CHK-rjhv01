@@ -30,6 +30,11 @@
 # +------+-------+------------------------+
 ALLOWED_ITEMS = ["A", "B", "C", "D", "E", "F"]
 
+def get_another_free(item_count, num_for_free=2, other_item):
+    num_free = (item_count // num_for_free)
+    if item_count % num_for_free == 0:
+        num_free -= 1
+    return item_count - num_free
 
 def get_one_free(item_count, num_for_free=2):
     num_free = (item_count // num_for_free)
@@ -100,6 +105,7 @@ def checkout(skus):
             sum += skus_dict["F"] * 10
 
     return sum
+
 
 
 
