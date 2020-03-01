@@ -30,9 +30,16 @@
 # +------+-------+------------------------+
 ALLOWED_ITEMS = ["A", "B", "C", "D", "E", "F"]
 
-items = {
-    'A':
-}
+
+def get_one_free(item_count, num_for_free=2):
+    num_free = (item_count // num_for_free)
+    if item_count % num_for_free == 0:
+        num_free -= 1
+    return item_count - num_free
+
+# items = {
+#     'A':
+# }
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -79,10 +86,7 @@ def checkout(skus):
 
     if "F" in skus_dict and skus_dict["F"] > 2:
         # 2F get one F free
-        num_free = (skus_dict["F"] // 2)
-        if skus_dict["F"] % 2 == 0:
-            num_free -= 1
-        skus_dict["F"] -= num_free
+        skus_dict["F"] = get_one_free(skus_dict["F"])
 
     # handle rest of items
     for key in skus_dict:
@@ -96,6 +100,7 @@ def checkout(skus):
             sum += skus_dict["F"] * 10
 
     return sum
+
 
 
 
