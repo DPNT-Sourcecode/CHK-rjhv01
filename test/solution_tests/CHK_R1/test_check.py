@@ -97,6 +97,9 @@ class TestSum():
     def test_SSSZ(self):
         assert checkout_solution.checkout("SSSZ") == 65
 
+    def test_STXSTX(self):
+        assert checkout_solution.checkout("STXSTX") == 90
+
     def test_STXZ(self):
         assert checkout_solution.checkout("STXZ") == 62
 
@@ -105,7 +108,3 @@ class TestSum():
 
     def test_4Y(self):
         assert checkout_solution.checkout("Y"*4) == 65
-
-
-
-
