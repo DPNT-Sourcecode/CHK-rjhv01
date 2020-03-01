@@ -13,6 +13,7 @@
 def checkout(skus):
     sum = 0
     skus = sorted(skus)
-    
+
     for sku in skus:
+
 
