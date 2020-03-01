@@ -41,13 +41,24 @@ def group_discount(items_cnt, grouped_items, num, amount):
     ks = sorted(items_cnt.keys(), key=item_price.get, reverse=True)
     print(ks)
 
+    grouped_items = ""
+    for key in ks:
+        if key in grouped_items:
+            grouped_items_cnt[key] = items_cnt[key]
+
+
+
     carry_group_items = {}
     carry_cnt = 0
     for key in ks:
         if key in grouped_items:
             if items_cnt[key] >= num:
-                items_cnt[key] -= items_cnt[key] // 3
-                total += amount
+                num_taken = items_cnt[key] // num
+                items_cnt[key] -= num_taken
+                total += amount * num_taken
+
+                carry_group_items[key] = items_cnt[key] % num
+
             # cnt = items_cnt[key]
             # if cnt + carry_cnt >= num:
             #     total += amount
@@ -149,6 +160,7 @@ def checkout(skus):
         sum += items_cnt[key] * item_price[key]
 
     return sum
+
 
 
 
