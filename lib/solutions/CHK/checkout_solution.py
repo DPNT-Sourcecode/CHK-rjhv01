@@ -1,12 +1,12 @@
-
-# +------+-------+----------------+
-# | Item | Price | Special offers |
-# +------+-------+----------------+
-# | A    | 50    | 3A for 130     |
-# | B    | 30    | 2B for 45      |
-# | C    | 20    |                |
-# | D    | 15    |                |
-# +------+-------+----------------+
+# +------+-------+------------------------+
+# | Item | Price | Special offers         |
+# +------+-------+------------------------+
+# | A    | 50    | 3A for 130, 5A for 200 |
+# | B    | 30    | 2B for 45              |
+# | C    | 20    |                        |
+# | D    | 15    |                        |
+# | E    | 40    | 2E get one B free      |
+# +------+-------+------------------------+
 
 ALLOWED_ITEMS = ["A", "B", "C", "D"]
 
@@ -29,6 +29,10 @@ def checkout(skus):
     sum = 0
 
     # handle special offers
+    if "E" in skus_dict:
+        sum += (skus_dict["A"] // 3) * 130
+        sum += (skus_dict["A"] % 3) * 50
+        del skus_dict["A"]
     if "A" in skus_dict:
         sum += (skus_dict["A"] // 3) * 130
         sum += (skus_dict["A"] % 3) * 50
@@ -46,4 +50,5 @@ def checkout(skus):
             sum += skus_dict["D"] * 15
 
     return sum
+
 

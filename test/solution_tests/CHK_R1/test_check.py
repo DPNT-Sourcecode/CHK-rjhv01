@@ -51,11 +51,21 @@ class TestSum():
     # | E    | 40    | 2E get one B free      |
     # +------+-------+------------------------+
 
-    def test_AAAAA(self):
-        assert checkout_solution.checkout("AAAAA") == 200
+    def test_4A(self):
+        assert checkout_solution.checkout("A" * 4) == 200
+
+    def test_6A(self):
+        assert checkout_solution.checkout("A" * 6) == 250
+
+    def test_11A(self):
+        assert checkout_solution.checkout("A" * 11) == 450
 
     def test_BEE(self):
         assert checkout_solution.checkout("BEE") == 80
 
     def test_E(self):
         assert checkout_solution.checkout("E") == 40
+
+    def test_4E2B(self):
+        assert checkout_solution.checkout("EEBEEB") == 160
+
