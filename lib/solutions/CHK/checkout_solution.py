@@ -14,16 +14,18 @@ ALLOWED_ITEMS = ["A", "B", "C", "D"]
 # skus = unicode string
 def checkout(skus):
     skus = list(skus)
+    print(skus)
 
     # get number of items
     skus_dict = {}
     for sku in skus:
         if sku not in ALLOWED_ITEMS:
             return -1
+
         if sku in skus_dict:
             skus_dict[sku] += 1
         else:
-            skus_dict = 1
+            skus_dict[sku] = 1
 
     sum = 0
 
@@ -39,6 +41,13 @@ def checkout(skus):
 
     # handle rest
     for key in skus_dict:
+        if key == "C":
+            sum += skus_dict["C"] * 20
+        if key == "D":
+            sum += skus_dict["D"] * 15
+
+    return sum
+
 
 
 
