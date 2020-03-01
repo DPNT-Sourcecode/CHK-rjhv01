@@ -37,7 +37,8 @@ def group_discount(skus_dict, grouped_items, num, amount):
             excess_group_items[k] = skus_dict[k] % num
 
     # order by most expensive excess_group_items
-    excess_group_items = sorted(excess_group_items, key=item_price[excess_group_items.get].get, reverse=True)
+    # excess_group_items = sorted(excess_group_items, key=item_price[excess_group_items.get].get, reverse=True)
+    sorted(excess_group_items.items(), key=lambda kv: [kv[0]])
 
     carry_group_items = {}
     carry_cnt = 0
@@ -144,6 +145,7 @@ def checkout(skus):
         sum += skus_dict[key] * item_price[key]
 
     return sum
+
 
 
 
