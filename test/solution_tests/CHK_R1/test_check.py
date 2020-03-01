@@ -105,20 +105,21 @@ class TestSum():
         assert checkout_solution.checkout("RRRRQ") == 200
 
     def test_6R2Q(self):
-        assert checkout_solution.checkout("R"*6 + "Q"*2) == 300
+        assert checkout_solution.checkout("R" * 6 + "Q" * 2) == 300
 
     def test_6R3Q(self):
-        assert checkout_solution.checkout("R"*6 + "Q"*3) == 330
+        assert checkout_solution.checkout("R" * 6 + "Q" * 3) == 330
 
     def test_4U(self):
-        assert checkout_solution.checkout("U"*4) == 120
+        assert checkout_solution.checkout("U" * 4) == 120
 
     def test_5U(self):
-        assert checkout_solution.checkout("U"*5) == 160
+        assert checkout_solution.checkout("U" * 5) == 160
 
     def test_get_another_free(self):
         pass
 
     def test_get_one_free(self):
         pass
+
 
