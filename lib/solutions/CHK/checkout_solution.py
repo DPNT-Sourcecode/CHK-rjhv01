@@ -30,9 +30,13 @@ def checkout(skus):
 
     # handle special offers
     if "E" in skus_dict:
-        sum += (skus_dict["A"] // 3) * 130
-        sum += (skus_dict["A"] % 3) * 50
-        del skus_dict["A"]
+        num_es = skus_dict["E"]
+        if "B" in skus_dict :
+            skus_dict["B"] -= skus_dict["E"] // 2
+
+        if skus_dict["B"] <= 0:
+            del skus_dict["B"]
+
     if "A" in skus_dict:
         sum += (skus_dict["A"] // 3) * 130
         sum += (skus_dict["A"] % 3) * 50
@@ -50,5 +54,6 @@ def checkout(skus):
             sum += skus_dict["D"] * 15
 
     return sum
+
 
 
