@@ -59,11 +59,15 @@ item_price = {
 
 
 def group_discount(skus_dict, grouped_items, num, amount):
+    total = 0
     while True:
         removed = {}
         for k in grouped_items:
             if k in skus_dict and skus_dict[k] > 0:
-                skus_dict[k] -= 1
+                num_to_remove = skus_dict // 3
+                if num_to_remove > 1
+                    total += num_to_remove * amount
+                    skus_dict[k] -= num_to_remove * num
 
 
 # costs Y when you buy X of item
@@ -169,8 +173,3 @@ def checkout(skus):
         sum += skus_dict[key] * item_price[key]
 
     return sum
-
-
-
-
-
