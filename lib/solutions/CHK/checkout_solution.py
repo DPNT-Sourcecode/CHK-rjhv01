@@ -46,7 +46,7 @@ def checkout(skus):
         if key == "D":
             sum += skus_dict["D"] * 15
 
-    return sum
+    return -1 if sum == 0 else sum
 
 
 
