@@ -46,7 +46,8 @@ def group_discount(items_cnt, grouped_items, num, amount):
     for key in ks:
         if key in grouped_items:
             if items_cnt[key] >= num:
-                
+                items_cnt[key] -= items_cnt[key] // 3
+                total += amount
             # cnt = items_cnt[key]
             # if cnt + carry_cnt >= num:
             #     total += amount
@@ -148,6 +149,7 @@ def checkout(skus):
         sum += items_cnt[key] * item_price[key]
 
     return sum
+
 
 
 
