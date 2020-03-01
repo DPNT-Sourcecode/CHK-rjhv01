@@ -97,5 +97,3 @@ class TestSum():
 
     def test_6F(self):
         assert checkout_solution.checkout("F" * 6) == 40
-
-
