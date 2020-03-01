@@ -144,6 +144,7 @@ def checkout(skus):
     sum += XforY(skus_dict, "A", 5, 200)
     sum += XforY(skus_dict, "A", 3, 130)
     sum += XforY(skus_dict, "B", 2, 45)
+    sum += XforY(skus_dict, "K", 2, 150)
     sum += XforY(skus_dict, "H", 10, 80)
     sum += XforY(skus_dict, "H", 5, 45)
     sum += XforY(skus_dict, "P", 5, 200)
@@ -156,3 +157,4 @@ def checkout(skus):
         sum += skus_dict[key] * item_price[key]
 
     return sum
+
