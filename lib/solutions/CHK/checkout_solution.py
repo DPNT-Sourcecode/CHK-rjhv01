@@ -36,7 +36,7 @@ def XforY(skus_dict, item, X, Y):
     if item in skus_dict:
         matches = skus_dict[item] // X
         total = matches * Y
-        skus_dict[item] -= matches
+        skus_dict[item] = skus_dict[item] % X
     return skus_dict, total
 
 
@@ -97,10 +97,8 @@ def checkout(skus):
         sum += (skus_dict["A"] % 3) * 50
         del skus_dict["A"]
 
-    if "B" in skus_dict:
-        # 2B for 45
-        skus_dict, s = XforY(skus_dict, "B", 2, 45)
-        sum += s
+    _, s = XforY(skus_dict, "B", 2, 45)
+    sum += s
 
     if "F" in skus_dict and skus_dict["F"] > 2:
         # 2F get one F free
@@ -120,6 +118,7 @@ def checkout(skus):
             sum += skus_dict["F"] * 10
 
     return sum
+
 
 
 
