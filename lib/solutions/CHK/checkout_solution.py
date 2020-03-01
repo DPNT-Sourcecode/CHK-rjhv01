@@ -55,7 +55,11 @@ def checkout(skus):
         del skus_dict["B"]
 
     if "F" in skus_dict and skus_dict["F"] > 2:
-        skus_dict["F"] -= (skus_dict["F"] // 2)
+        total_f = skus_dict["F"]
+        for i in range(total_f):
+            if i % 2 == 0:
+                total_f -= 1
+        skus_dict["F"] = total_f
 
     # handle rest of items
     for key in skus_dict:
@@ -69,5 +73,6 @@ def checkout(skus):
             sum += skus_dict["F"] * 10
 
     return sum
+
 
 

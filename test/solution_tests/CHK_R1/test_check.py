@@ -92,3 +92,10 @@ class TestSum():
     def test_5F(self):
         assert checkout_solution.checkout("F" * 5) == 30
 
+    def test_4F(self):
+        assert checkout_solution.checkout("F" * 4) == 30
+
+    def test_6F(self):
+        assert checkout_solution.checkout("F" * 6) == 40
+
+
