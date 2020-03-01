@@ -97,3 +97,12 @@ class TestSum():
 
     def test_6F(self):
         assert checkout_solution.checkout("F" * 6) == 40
+
+    def test_3RQ(self):
+        assert checkout_solution.checkout("RRRQ") == 40
+
+    def test_get_another_free(self):
+        pass
+
+    def test_get_one_free(self):
+        pass
