@@ -30,17 +30,22 @@
 # +------+-------+------------------------+
 ALLOWED_ITEMS = ["A", "B", "C", "D", "E", "F"]
 
-def get_another_free(item_count, num_for_free=2, other_item):
-    num_free = (item_count // num_for_free)
-    if item_count % num_for_free == 0:
-        num_free -= 1
-    return item_count - num_free
+def get_another_free(skus_dict, current_item, other_item, num_for_free=2):
+    if other_item in skus_dict:
+        skus_dict[other_item] -= skus_dict[current_item] // num_for_free
 
-def get_one_free(item_count, num_for_free=2):
-    num_free = (item_count // num_for_free)
-    if item_count % num_for_free == 0:
+        if skus_dict[other_item] <= 0:
+            del skus_dict[other_item]
+    return skus_dict
+
+def get_one_free(skus_dict, item, num_for_free=2):
+    if skus_dict[item] <= num_for_free:
+        return skus_dict
+
+    num_free = (skus_dict[item] // num_for_free)
+    if skus_dict[item] % num_for_free == 0:
         num_free -= 1
-    return item_count - num_free
+    return skus_dict[item] - num_free
 
 # items = {
 #     'A':
@@ -68,11 +73,6 @@ def checkout(skus):
     # assuming that "2E get one B" free takes precedence to "2B for 45"
     if "E" in skus_dict:
         # 2E get one B
-        if "B" in skus_dict:
-            skus_dict["B"] -= skus_dict["E"] // 2
-
-            if skus_dict["B"] <= 0:
-                del skus_dict["B"]
 
     if "A" in skus_dict:
         # 3A for 130, 5A for 200
@@ -91,7 +91,7 @@ def checkout(skus):
 
     if "F" in skus_dict and skus_dict["F"] > 2:
         # 2F get one F free
-        skus_dict["F"] = get_one_free(skus_dict["F"])
+        skus_dict = get_one_free(skus_dict, "F")
 
     # handle rest of items
     for key in skus_dict:
@@ -105,6 +105,7 @@ def checkout(skus):
             sum += skus_dict["F"] * 10
 
     return sum
+
 
 
 
