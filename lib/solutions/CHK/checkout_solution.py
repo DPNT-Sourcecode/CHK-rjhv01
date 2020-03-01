@@ -29,24 +29,31 @@ def checkout(skus):
     sum = 0
 
     # handle special offers
+    # assuming that "2E get one B" free takes precedence to "2B for 45"
     if "E" in skus_dict:
-        num_es = skus_dict["E"]
-        if "B" in skus_dict :
+        # 2E get one B
+        if "B" in skus_dict:
             skus_dict["B"] -= skus_dict["E"] // 2
 
         if skus_dict["B"] <= 0:
             del skus_dict["B"]
 
     if "A" in skus_dict:
+        # 3A for 130, 5A for 200
+        while skus_dict["A"] >= 5:
+            skus_dict["A"] -= 5
+            sum +=
         sum += (skus_dict["A"] // 3) * 130
         sum += (skus_dict["A"] % 3) * 50
         del skus_dict["A"]
+
     if "B" in skus_dict:
+        # 2B for 45
         sum += (skus_dict["B"] // 2) * 45
         sum += (skus_dict["B"] % 2) * 30
         del skus_dict["B"]
 
-    # handle rest
+    # handle rest of items
     for key in skus_dict:
         if key == "C":
             sum += skus_dict["C"] * 20
@@ -54,6 +61,7 @@ def checkout(skus):
             sum += skus_dict["D"] * 15
 
     return sum
+
 
 
 
