@@ -119,8 +119,12 @@ class TestSum():
     def test_STY(self):
         assert checkout_solution.checkout("STY") == 45
 
+    def test_4STY(self):
+        assert checkout_solution.checkout("S"*4+"TY") == 90
+
     def test_3Y(self):
         assert checkout_solution.checkout("Y"*3) == 45
 
     def test_4Y(self):
         assert checkout_solution.checkout("Y"*4) == 65
+
