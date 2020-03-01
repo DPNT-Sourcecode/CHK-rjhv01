@@ -55,10 +55,8 @@ def checkout(skus):
         del skus_dict["B"]
 
     if "F" in skus_dict and skus_dict["F"] >= 3:
-        # 2F get one F free
-        sum += (skus_dict["B"] // 2) * 45
-        sum += (skus_dict["B"] % 2) * 30
-        del skus_dict["B"]
+        num_free = (skus_dict["F"] // 2)
+        skus_dict["F"] -= num_free
 
     # handle rest of items
     for key in skus_dict:
@@ -72,9 +70,4 @@ def checkout(skus):
             sum += skus_dict["F"] * 10
 
     return sum
-
-
-
-
-
 
