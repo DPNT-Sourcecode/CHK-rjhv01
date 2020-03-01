@@ -50,10 +50,10 @@ def group_discount(skus_dict, grouped_items, num, amount):
 
         if cnt + carry_cnt >= num:
             total += amount
+
             # delete the carried items
             for key2 in carry_group_items:
-                cnt2 = carry_group_items[key2]
-                skus_dict[key2] -= cnt2
+                skus_dict[key2] -= carry_group_items[key2]
 
             carry_group_items = {
                 key: (cnt + carry_cnt) - num
@@ -143,4 +143,5 @@ def checkout(skus):
         sum += skus_dict[key] * item_price[key]
 
     return sum
+
 
