@@ -8,12 +8,19 @@
 # | D    | 15    |                |
 # +------+-------+----------------+
 
+ALLOWED_ITEMS = ["A", "B", "C", "D"]
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    sum = 0
     skus = sorted(skus)
-
+    skus_dict = {}
     for sku in skus:
+        if sku not in ALLOWED_ITEMS:
+            return -1
+        if sku in skus_dict:
+            skus_dict[sku] += 1
+        else:
+            skus_dict = 1
 
 
